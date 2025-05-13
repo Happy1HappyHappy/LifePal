@@ -14,6 +14,6 @@ public class DiaryController {
 
     @GetMapping("/api/diary")
     public List<Diary> getAllDiaries() {
-        return diaryRepository.findAll();
+        return ??????.findAll();
     }
 }

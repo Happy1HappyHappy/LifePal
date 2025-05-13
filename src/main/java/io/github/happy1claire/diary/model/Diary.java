@@ -67,6 +67,35 @@ public class Diary implements Comparable<Diary> {
     private String imageUrl;
 
     /**
+     * Default constructor for JPA.
+     */
+    public Diary() {
+        // Default constructor for JPA
+    }
+
+    /**
+     * Constructs a new {@code Diary} entry with the specified details.
+     * If any of the arguments are {@code null}, the corresponding fields will also be set to {@code null}.
+     *
+     * @param title     the title of the diary entry, or {@code null}
+     * @param content   the main content of the diary, or {@code null}
+     * @param current   the creation timestamp, or {@code null}
+     * @param updated   the last updated timestamp, or {@code null}
+     * @param userId    the ID of the user who owns this diary entry, or {@code null}
+     * @param mood      the mood associated with this entry, or {@code null}
+     * @param imageUrl  an optional image URL for the entry, or {@code null}
+     */
+    public Diary(String title, String content, LocalDateTime current, LocalDateTime updated, String userId, Mood mood, String imageUrl) {
+        this.title = (title == null) ? null : title;
+        this.content = (content == null) ? null : content;
+        this.createdAt = (current == null) ? null : current;
+        this.updatedAt = (updated == null) ? null : updated;
+        this.userId = (userId == null) ? null : userId;
+        this.mood = (mood == null) ? null : mood;
+        this.imageUrl = (imageUrl == null) ? null : imageUrl;
+    }
+
+    /**
      * Gets the diary ID.
      * @return the diary ID
      */
