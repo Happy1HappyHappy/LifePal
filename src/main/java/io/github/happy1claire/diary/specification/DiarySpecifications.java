@@ -5,7 +5,6 @@ import io.github.happy1claire.diary.model.Mood;
 import org.springframework.data.jpa.domain.Specification;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import jakarta.persistence.criteria.CriteriaQuery;
 import java.time.LocalDateTime;
@@ -13,7 +12,7 @@ import java.time.LocalDateTime;
 /**
  * This class is used to define specifications for querying diary entries.
  */
-public class DairySpecifications {
+public class DiarySpecifications {
 
     /**
      * Creates a Specification that checks if the diary title contains the given keyword.
