@@ -1,20 +1,22 @@
 package io.github.happy1claire.diary.service;
 
-import io.github.happy1claire.diary.dto.DiaryFilterRequest;
+import io.github.happy1claire.diary.dto.FilterRequest;
+import io.github.happy1claire.diary.dto.SortRequest;
 import io.github.happy1claire.diary.model.Diary;
 import io.github.happy1claire.diary.repository.DiaryRepository;
-import io.github.happy1claire.diary.specification.DiarySpecifications;
+import io.github.happy1claire.diary.utils.FilterUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-
 public class DiaryService {
 
     private final DiaryRepository diaryRepository;
+    private final Sort deafultSort = Sort.by(Sort.Direction.DESC, "createdAt");
 
     /**
      * Constructor for DiaryService.
@@ -29,41 +31,34 @@ public class DiaryService {
      * @param diary the diary to be added into database.
      */
     public void addNewDairy(Diary diary) throws Exception {
-        if (diary ==null) {
-            throw new IllegalArgumentException("Diary is null");
+        if (diary == null) {
+            throw new IllegalArgumentException("Diary to add is null");
         }
         diaryRepository.save(diary);
     }
 
     /**
+     * Method to delete an existing diary entry.
+     * @param diaryId the diaryID to be deleted.
+     */
+    public void deleteDiary(Long diaryId) {
+        if (diaryId == null) {
+            throw new IllegalArgumentException("Diary ID to delete is null");
+        }
+        diaryRepository.deleteById(diaryId);
+    }
+
+    /**
      * Method to search diary entries based on various criteria.
+     * Sort by the given sort.
      * @param request the filter request DTO
+     * @param sortRequest the sort criteria
      * @return the filtered list of diary entries
      */
-    public List<Diary> searchDiaries(DiaryFilterRequest request) {
-        Specification<Diary> spec = Specification.where(null);
-
-        if (request == null) {
-            throw new IllegalArgumentException("request is null");
-        }
-
-        if (request.getTitle() != null) {
-            spec = spec.and(DiarySpecifications.titleContains(request.getTitle()));
-        }
-        if (request.getContent() != null) {
-            spec = spec.and(DiarySpecifications.contentContains(request.getContent()));
-        }
-        if (request.getMood() != null) {
-            spec = spec.and(DiarySpecifications.hasMood(request.getMood()));
-        }
-        if (request.getStartDate() != null && request.getEndDate() != null) {
-            spec = spec.and(DiarySpecifications.hasCreatedAtBetween(request.getStartDate(), request.getEndDate()));
-        }
-        if (request.getUserId() != null) {
-            spec = spec.and(DiarySpecifications.hasUserId(request.getUserId()));
-        }
-
-        return diaryRepository.findAll(spec);
+    public List<Diary> searchDiaries(FilterRequest request, SortRequest sortRequest) {
+        Specification<Diary> spec = FilterUtils.makeFilter(request);
+        Sort sort = sortRequest.toSpringSort(deafultSort); // Convert to Spring Sort
+        return diaryRepository.findAll(spec, sort); // Use provided sort here
     }
 
 }

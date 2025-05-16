@@ -4,7 +4,7 @@ import io.github.happy1claire.diary.model.Mood;
 
 import java.time.LocalDateTime;
 
-public class DiaryFilterRequest {
+public class FilterRequest {
     /**
      * Optional keyword to search within the diary title.
      */
@@ -34,6 +34,9 @@ public class DiaryFilterRequest {
      * Optional user ID to restrict the search to diaries belonging to a specific user.
      */
     private String userId;
+
+
+    public FilterRequest() {}
 
     /**
      * Returns the title keyword to search for.

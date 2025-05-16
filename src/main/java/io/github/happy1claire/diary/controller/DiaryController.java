@@ -1,8 +1,10 @@
 package io.github.happy1claire.diary.controller;
 
-import io.github.happy1claire.diary.dto.DiaryFilterRequest;
+import io.github.happy1claire.diary.dto.FilterRequest;
+import io.github.happy1claire.diary.dto.SortRequest;
 import io.github.happy1claire.diary.model.Diary;
 import io.github.happy1claire.diary.service.DiaryService;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +30,8 @@ public class DiaryController {
      * @return the filtered list of diary entries
      */
     @PostMapping("/search")
-    public ResponseEntity<List<Diary>> searchDiaries(@RequestBody DiaryFilterRequest filterRequest) {
-        List<Diary> results = diaryService.searchDiaries(filterRequest);
+    public ResponseEntity<List<Diary>> searchDiaries(@RequestBody FilterRequest filterRequest, @RequestBody SortRequest sortRequest) {
+        List<Diary> results = diaryService.searchDiaries(filterRequest, sortRequest);
         return ResponseEntity.ok(results);
     }
 
