@@ -1,9 +1,11 @@
 package io.github.happy1claire.diary.dto;
 
 import io.github.happy1claire.diary.model.Mood;
-
 import java.time.LocalDateTime;
 
+/**
+ * DTO class to encapsulate filter criteria for diary entries.
+ */
 public class FilterRequest {
     /**
      * Optional keyword to search within the diary title.
@@ -35,8 +37,12 @@ public class FilterRequest {
      */
     private String userId;
 
-
-    public FilterRequest() {}
+    /**
+     * Default constructor.
+     */
+    public FilterRequest() {
+        // Default constructor, conform with DTO pattern.
+    }
 
     /**
      * Returns the title keyword to search for.

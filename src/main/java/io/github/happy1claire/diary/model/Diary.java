@@ -36,20 +36,20 @@ public class Diary implements Comparable<Diary> {
      * The timestamp when the diary entry was created.
      * Cannot be null.
      */
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "createdAt", nullable = false)
     private LocalDateTime createdAt;
 
     /**
      * The timestamp when the diary entry was last updated.
      */
-    @Column(name = "updated_at")
+    @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
     /**
      * The ID of the user who owns this diary entry.
      * Linked to database.
      */
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "userId", nullable = false)
     private String userId;
 
     /**
@@ -63,7 +63,7 @@ public class Diary implements Comparable<Diary> {
      * An optional image URL associated with the diary entry.
      * Useful for visual journaling.
      */
-    @Column(name = "image_url")
+    @Column(name = "imageUrl")
     private String imageUrl;
 
     /**
@@ -223,8 +223,6 @@ public class Diary implements Comparable<Diary> {
         this.imageUrl = imageUrl;
     }
 
-    // Comparable Implementation
-
     /**
      * Compares this diary entry with another based on creation timestamp.
      * @param other the other diary entry to compare to
@@ -235,6 +233,11 @@ public class Diary implements Comparable<Diary> {
         return this.diaryId.compareTo(other.diaryId);
     }
 
+    /**
+     * Checks if this diary entry is equal to another object.
+     * @param o the object to compare with
+     * @return true if they are equal, false otherwise
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -242,11 +245,19 @@ public class Diary implements Comparable<Diary> {
         return Objects.equals(diaryId, diary.diaryId);
     }
 
+    /**
+     * Generates a hash code for this diary entry.
+     * @return the hash code
+     */
     @Override
     public int hashCode() {
         return Objects.hash(diaryId);
     }
 
+    /**
+     * Generates a string representation of this diary entry.
+     * @return the string representation
+     */
     @Override
     public String toString() {
         return "Diary{" +

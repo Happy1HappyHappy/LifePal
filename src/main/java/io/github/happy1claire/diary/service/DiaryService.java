@@ -12,10 +12,20 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service class for managing diary entries.
+ */
 @Service
 public class DiaryService {
 
+    /**
+     * Repository for accessing diary entries in the database.
+     */
     private final DiaryRepository diaryRepository;
+
+    /**
+     * Default sort order for diary entries.
+     */
     private final Sort deafultSort = Sort.by(Sort.Direction.DESC, "createdAt");
 
     /**
