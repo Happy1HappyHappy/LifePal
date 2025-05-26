@@ -1,2 +1,17 @@
+# Global
 .DS_Store
-/build
+.env
+
+# IntelliJ
+.idea/
+*.iml
+backend/.idea/
+backend/*.iml
+
+# Node (React)
+frontend/node_modules/
+frontend/build/
+
+# Java (Spring Boot)
+backend/target/
+*.log
