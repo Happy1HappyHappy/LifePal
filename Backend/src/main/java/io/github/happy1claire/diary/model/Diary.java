@@ -22,14 +22,14 @@ public class Diary implements Comparable<Diary> {
      * The title of the diary entry.
      * Cannot be null and has a maximum length of 100 characters.
      */
-    @Column(length = 100)
+    @Column(name = "title", length = 100)
     private String title;
 
     /**
      * The main textual content of the diary.
      * Stored as TEXT to allow long entries.
      */
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
     /**
