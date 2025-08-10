@@ -29,6 +29,9 @@ dependencies {
 
     // Lombok for reducing boilerplate code
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Jackson for JSON processing
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
 }
 
 test {

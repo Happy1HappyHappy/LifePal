@@ -9,3 +9,6 @@ spring:
   h2:
     console:
       enabled: true
+
+  config:
+    import: "classpath:/questionnaires/"
