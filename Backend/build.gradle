@@ -32,6 +32,9 @@ dependencies {
 
     // Jackson for JSON processing
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
+
+    // Spring Security for securing the application
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 
 test {

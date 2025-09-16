@@ -1,6 +1,6 @@
 package io.github.happy1claire.diary.service;
 
-import io.github.happy1claire.diary.properties.Phq9Properties;
+import io.github.happy1claire.diary.config.Phq9Properties;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

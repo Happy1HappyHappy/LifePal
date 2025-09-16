@@ -1,4 +1,4 @@
-package io.github.happy1claire.diary.properties;
+package io.github.happy1claire.diary.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.util.List;
